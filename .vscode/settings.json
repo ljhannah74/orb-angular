@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b85d5ac2-d5d5-49ee-8d34-fa91b3681ff6/AppServices/subscriptions/b85d5ac2-d5d5-49ee-8d34-fa91b3681ff6/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/orb-angular",
+    "appService.deploySubpath": "."
+}

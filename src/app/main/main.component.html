@@ -1,8 +1,10 @@
-<div class="container">
-<h3>State</h3>
-<select>
-    <option>PA</option>
-    <option>FL</option>
-    <option>MD</option>
-</select>
-</div> 
+<form [formGroup]="searchForm">
+    <table>
+        <tr>
+            <td><app-state [searchForm]="searchForm"></app-state></td>
+            <td><app-county [searchForm]="searchForm"></app-county></td>
+            <td><button type="submit">SEARCH</button></td>
+            <td><button type="reset">RESET</button></td>
+        </tr>
+    </table>     
+</form>

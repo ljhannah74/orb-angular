@@ -1,10 +1,13 @@
-<form [formGroup]="searchForm">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <table>
         <tr>
             <td><app-state [searchForm]="searchForm"></app-state></td>
             <td><app-county [searchForm]="searchForm"></app-county></td>
+            <td><app-tax-auth [searchForm]="searchForm"></app-tax-auth></td>
+            <td><app-tax-auth-type [searchForm]="searchForm"></app-tax-auth-type></td>
             <td><button type="submit">SEARCH</button></td>
-            <td><button type="reset">RESET</button></td>
+            <td><button type="reset" (click)="onReset($event)">RESET</button></td>
         </tr>
     </table>     
 </form>
+<app-indexes [orb]="this.orb"></app-indexes>

@@ -1,8 +1,7 @@
 <form [formGroup]="searchForm">
     <label>State:</label>
-    <select formControlName="stateId" (change)="onSelect($event)">
-        <option value="0">--Select--</option>
-        <option *ngFor="let state of states" [value]="state.stateId">{{state.st}}</option>
+    <select formControlName="state" (change)="onSelect($event)">
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
         <br/><br/>
     </select>
 </form>

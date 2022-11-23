@@ -1,30 +1,43 @@
 import { Injectable } from '@angular/core';
+import { ObservedValueOf } from 'rxjs';
 import { County } from './county';
+import { Orb } from './orb';
 import { State } from './state';
 
 @Injectable()
 export class SelectService {
-  stateId!: number;
+  st!: string;
+  county!: string;
   
-  getStates(): State[] {
-    return [
-     new State(1, 'PA' ),
-     new State(2, 'FL' ),
-    ];
+  getStates(): string[] {
+    var states = [...new Set(this.getOrbs().map(t=>t.st))];
+    return states;
   }
 
-  getCounties(): County[] {
+  getCounties(): string[] {
+    var counties = this.getOrbs().map(t=>t.county);
+
+    return counties;
+  }
+
+  getOrbs(): Orb[] {
     return [
-      new County(1,1,'ALLEGHENY'),
-      new County(2,1,'WASHINGTON'),
-      new County(5,1,'WESTMORELAND'),
-      new County(3,2,'BROWARD'),
-      new County(4,2,'PALM BEACH')
+      new Orb('PA','WASHINGTON','http://tyler.washcopa.org/pt/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=owner'),
+      new Orb('PA','ALLEGHENY','http://www.landex.com'),
+      new Orb('FL','PALMBEACH','https://erec.mypalmbeachclerk.com/')
     ]
   }
 
   filterCounties() {
-    if(!this.stateId) return null;
-    return this.getCounties().filter((item) => item.stateId == this.stateId);
+    if(!this.st) return null;
+    var filteredCounties = this.getOrbs().filter((item) => item.st == this.st).map(item => item.county);
+    filteredCounties.sort();
+    return filteredCounties;
+  }
+
+  filterOrbs(): Orb {
+    var orb = this.getOrbs().find((item) => item.st == this.st && item.county == this.county) as Orb;
+
+    return orb;
   }
 }

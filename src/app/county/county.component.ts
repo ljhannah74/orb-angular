@@ -16,4 +16,8 @@ export class CountyComponent {
   };
 
   constructor(private selectService: SelectService) { }
+
+  onSelect(event: Event) {
+    this.selectService.county = ((event.target as HTMLTextAreaElement).value);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Orb } from '../orb';
 import { SelectService } from '../select-service';
 import { State } from '../state';
 
@@ -12,17 +13,31 @@ import { State } from '../state';
 export class MainComponent implements OnInit {
 
   searchForm!: FormGroup;
+  orb!: Orb;
 
   constructor(private selectService: SelectService) {}
 
 ngOnInit() {
   this.searchForm = new FormGroup({
-    stateId: new FormControl(''),
-    countyId: new FormControl(''),
+    state: new FormControl(''),
+    county: new FormControl(''),
+    taxAuthId: new FormControl(''),
+    taxAuthTypeId: new FormControl(''),
   })
   this.searchForm.setValue({
-    stateId: 0,
-    countyId: 0,
+    state: '',
+    county: '',
+    taxAuthId: 0,
+    taxAuthTypeId: 0,
   })
 }
+
+  onSubmit() {
+    this.orb = this.selectService.filterOrbs();
+  }
+
+  onReset(event: any) {
+    this.searchForm.reset();
+    this.orb = this.selectService.filterOrbs();
+  }
 }

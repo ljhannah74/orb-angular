@@ -1,8 +1,7 @@
 <form [formGroup]="searchForm">
     <label>County:</label>
-    <select formControlName="countyId">
-        <option value="0">--Select--</option>
-        <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+    <select formControlName="county" (change)="onSelect($event)">
+        <option *ngFor="let county of counties" [value]="county">{{county}}</option>
         <br/><br/>
     </select>
 </form>

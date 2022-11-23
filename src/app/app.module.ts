@@ -9,6 +9,9 @@ import { StateComponent } from './state/state.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectService } from './select-service';
 import { CountyComponent } from './county/county.component';
+import { TaxAuthComponent } from './tax-auth/tax-auth.component';
+import { TaxAuthTypeComponent } from './tax-auth-type/tax-auth-type.component';
+import { IndexesComponent } from './indexes/indexes.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +19,10 @@ import { CountyComponent } from './county/county.component';
         TopBarComponent,
         MainComponent,
         CountyComponent,
-        StateComponent
+        StateComponent,
+        TaxAuthComponent,
+        TaxAuthTypeComponent,
+        IndexesComponent
     ],
     providers: [SelectService],
     bootstrap: [AppComponent],

@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class StateComponent implements OnInit {
   @Input() searchForm!: FormGroup;
-  states!: State[];
+  states!: string[];
 
   constructor(private selectService: SelectService) {  }
 
@@ -19,7 +19,7 @@ export class StateComponent implements OnInit {
   }
 
   onSelect(event: Event) {
-    this.selectService.stateId = ((((event.target as HTMLTextAreaElement).value) as unknown) as number);
+    this.selectService.st = ((event.target as HTMLTextAreaElement).value);
   }
 
 }

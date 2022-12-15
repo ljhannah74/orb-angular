@@ -8,6 +8,8 @@ import { State } from './state';
 export class SelectService {
   st!: string;
   county!: string;
+  excelData!: string;
+ 
   
   getStates(): string[] {
     var states = [...new Set(this.getOrbs().map(t=>t.st))];
@@ -16,15 +18,14 @@ export class SelectService {
 
   getCounties(): string[] {
     var counties = this.getOrbs().map(t=>t.county);
-
     return counties;
   }
 
   getOrbs(): Orb[] {
     return [
-      new Orb('PA','WASHINGTON','http://tyler.washcopa.org/pt/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=owner'),
-      new Orb('PA','ALLEGHENY','http://www.landex.com'),
-      new Orb('FL','PALMBEACH','https://erec.mypalmbeachclerk.com/')
+      new Orb('PA','WASHINGTON', new Date("2022-12-12"), 'http://www.landex.com', 'http://tyler.washcopa.org/pt/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=owner', ''),
+      new Orb('PA','ALLEGHENY', new Date("2022-12-12"), 'https://pa_allegheny.uslandrecords.com/palr/', 'http://www2.county.allegheny.pa.us/RealEstate/search.aspx', ''),
+      new Orb('FL','PALM BEACH', new Date("2022-12-12"), 'https://erec.mypalmbeachclerk.com/', 'http://www.pbcgov.com/papa/', 'https://pbctax.manatron.com/Tabs/PropertyTax.aspx')
     ]
   }
 
